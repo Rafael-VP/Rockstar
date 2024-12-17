@@ -6,17 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skjtm"]
 
 [node name="Column" type="Node2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_ca5fs")
 
-[node name="NodeContainer" type="Node2D" parent="."]
+[node name="NoteContainer" type="Node2D" parent="."]
+position = Vector2(0, -781)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="."]
 
-[node name="Note" type="Sprite2D" parent="Area2D"]
+[node name="Note" type="Sprite2D" parent="HitArea"]
 position = Vector2(-1.3411e-07, -6.5)
 scale = Vector2(1.48, 1.41901)
 texture = ExtResource("1_6pfin")
 
-[node name="ColliderPerfect" type="CollisionShape2D" parent="Area2D"]
+[node name="ColliderPerfect" type="CollisionShape2D" parent="HitArea"]
 scale = Vector2(7, 7)
 shape = SubResource("RectangleShape2D_skjtm")

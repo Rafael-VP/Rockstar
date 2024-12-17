@@ -21,6 +21,7 @@ script = ExtResource("1_wohga")
 
 [node name="BeatmapFileDialog" type="FileDialog" parent="."]
 title = "Open a File"
+initial_position = 1
 size = Vector2i(400, 400)
 ok_button_text = "Open"
 file_mode = 0
@@ -41,8 +42,8 @@ texture = ExtResource("2_opowj")
 
 [node name="ForegroundAll" type="Sprite2D" parent="Background"]
 modulate = Color(0, 0, 0, 0.203922)
-position = Vector2(11.4026, 3.25796)
-scale = Vector2(29.474, 16.7477)
+position = Vector2(6.51541, -0.813904)
+scale = Vector2(29.3213, 16.6205)
 texture = SubResource("GradientTexture2D_u068m")
 
 [node name="ForegroundNotes" type="Sprite2D" parent="Background"]

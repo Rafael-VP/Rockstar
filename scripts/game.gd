@@ -1,42 +1,45 @@
 extends Node2D
 
-# Beatmap parser
-var beatmap_parser: BeatmapParser
-var beatmap_path: String = ""  # Path to selected beatmap file
-
-# Nodes
-@onready var beatmap_file_dialog = $BeatmapFileDialog
 @onready var audio_player = $AudioStreamPlayer
+@onready var beatmap_dialog = $BeatmapFileDialog
+
 @onready var columns = [$Column0, $Column1, $Column2, $Column3]
 
+# Variables
+var beatmap_parser = preload("res://scripts/beatmap_parser.gd").new()
+var hit_objects = []
+
 func _ready():
-	beatmap_parser = BeatmapParser.new()
-	setup_beatmap_selection()
+	# Set up BeatmapFileDialog
+	beatmap_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	beatmap_dialog.access = FileDialog.ACCESS_RESOURCES
+	beatmap_dialog.filters = ["*.osu ; osu! Beatmap Files"]
 
-func setup_beatmap_selection():
-	# Open file dialog on startup
-	beatmap_file_dialog.popup()
+	# Open the beatmap dialog
+	beatmap_dialog.popup_centered()
 
-func _on_BeatmapFileDialog_file_selected(path):
-	beatmap_path = path
-	print("Selected beatmap:", beatmap_path)
-	load_and_start_gameplay()
 
-func load_and_start_gameplay():
-	if beatmap_parser.parse_beatmap(beatmap_path):
-		# Load and play the song
-		var audio_file = "res://audio/" + beatmap_parser.audio_filename
-		audio_player.stream = load(audio_file)
-		audio_player.play()
+func start_gameplay():
+	# Load and play music
+	var audio_file = "res://audio/" + beatmap_parser.audio_filename
+	audio_player.stream = load(audio_file)
+	audio_player.play()
 
-		# Spawn notes for all hit objects
-		for hit_object in beatmap_parser.hit_objects:
-			var column = hit_object["column"]
-			var time = hit_object["time"] / 1000.0  # Convert ms to seconds
-			columns[column].spawn_note(time)
-	else:
-		print("Failed to parse beatmap.")
+	# Schedule note spawning
+	for hit_object in hit_objects:
+		var column_index = hit_object["column"]
+		var hit_time = hit_object["time"] / 1000.0  # Convert ms to seconds
+		spawn_note_in_column(column_index, hit_time)
+
+func spawn_note_in_column(column_index: int, hit_time: float):
+	var column = columns[column_index]
+	column.spawn_note(hit_time)
 
 
 func _on_beatmap_file_dialog_file_selected(path: String) -> void:
-	pass # Replace with function body.
+	# Parse the selected beatmap
+	if beatmap_parser.parse_beatmap(path):
+		hit_objects = beatmap_parser.hit_objects
+		start_gameplay()
+	else:
+		print("Failed to load beatmap.")
