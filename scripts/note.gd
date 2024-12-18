@@ -12,8 +12,8 @@ func _process(delta):
 	position.y += velocity * delta
 
 	# If note passes the hit area without being hit
-	if position.y >= target_y + 50 and not hit_registered:
-		register_miss()
+	#if position.y >= target_y + 50 and not hit_registered:
+	#	register_miss()
 
 func is_in_hit_window() -> bool:
 	var distance_to_hit = abs(target_y - position.y)
