@@ -19,14 +19,14 @@ func is_in_hit_window() -> bool:
 	var distance_to_hit = abs(target_y - position.y)
 	return distance_to_hit / velocity <= HIT_WINDOW_MISS
 
-func register_hit():
-	if hit_registered:
-		return
+func register_hit(judgment: String):
+	#if hit_registered:
+	#	return
 	hit_registered = true
-	print("Hit!")
+	print("Hit: ", judgment)
 	queue_free()
 
 func register_miss():
 	hit_registered = true
-	print("Miss!")
+	# print("Miss!")
 	#queue_free()

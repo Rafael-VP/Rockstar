@@ -5,17 +5,11 @@ extends Node2D
 @onready var hit_area = $HitArea
 @onready var audio_player = get_parent().get_node("AudioStreamPlayer")
 
-#var note_spawn_y: float = -500.0  # Position above the screen
-#var hit_area_y: float  # Hit area Y-coordinate
-var window_height: float = ProjectSettings.get("display/window/size/viewport_height")
-
-#func _ready():
-	# Position hit area dynamically near the bottom of the screen
-	#hit_area_y = window_height - 100
-	#hit_area.position = Vector2(0, hit_area_y)
-
-	# Position note container at spawn location
-	#note_container.position = Vector2(0, note_spawn_y)
+# Hit windows (adjust these based on testing)
+const PERFECT_WINDOW = 10.0  # Pixels
+const GREAT_WINDOW = 25.0
+const GOOD_WINDOW = 50.0
+const BAD_WINDOW = 75.0
 
 func spawn_note(hit_time: float):
 	var note_scene = preload("res://scenes/note.tscn")
@@ -28,8 +22,6 @@ func spawn_note(hit_time: float):
 
 	note.velocity = velocity
 	note.target_y = hit_area.position.y
-	#note.position = note_container.position  # Start position
-	#note.position.y = 0
 	note_container.add_child(note)
 
 func _process(delta):
@@ -39,6 +31,24 @@ func _process(delta):
 
 func check_for_hits():
 	for note in note_container.get_children():
-		if note.is_in_hit_window():
-			note.register_hit()
+		var distance = abs(note.global_position.y - hit_area.global_position.y)  # Distance to HitArea
+		# print(distance)
+
+		if distance <= PERFECT_WINDOW:
+			note.register_hit("Perfect")
 			return
+		elif distance <= GREAT_WINDOW:
+			note.register_hit("Great")
+			return
+		elif distance <= GOOD_WINDOW:
+			note.register_hit("Good")
+			return
+		elif distance <= BAD_WINDOW:
+			note.register_hit("Bad")
+			return
+
+	# If no note is close enough, register a Miss
+	# register_miss()
+
+func register_miss():
+	print("Miss")  # Log for now, expand this to reduce score or track misses
