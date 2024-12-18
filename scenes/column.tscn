@@ -10,7 +10,7 @@ position = Vector2(0, 1)
 script = ExtResource("1_ca5fs")
 
 [node name="NoteContainer" type="Node2D" parent="."]
-position = Vector2(2, -845)
+position = Vector2(0, -927)
 
 [node name="ColorRect" type="ColorRect" parent="NoteContainer"]
 offset_left = -21.0

@@ -6,17 +6,16 @@ extends Node2D
 @onready var audio_player = get_parent().get_node("AudioStreamPlayer")
 
 #var note_spawn_y: float = -500.0  # Position above the screen
-
+#var hit_area_y: float  # Hit area Y-coordinate
 var window_height: float = ProjectSettings.get("display/window/size/viewport_height")
 
 #func _ready():
 	# Position hit area dynamically near the bottom of the screen
 	#hit_area_y = window_height - 100
 	#hit_area.position = Vector2(0, hit_area_y)
-	# hit_area_y = hit_area.position.y
 
 	# Position note container at spawn location
-	# note_container.position = Vector2(0, note_spawn_y)
+	#note_container.position = Vector2(0, note_spawn_y)
 
 func spawn_note(hit_time: float):
 	var note_scene = preload("res://scenes/note.tscn")
@@ -24,12 +23,13 @@ func spawn_note(hit_time: float):
 
 	# Calculate velocity (distance/time)
 	var distance = hit_area.position.y - note_container.position.y
-	var time_to_hit = hit_time - (audio_player.get_playback_position() - AudioServer.get_time_since_last_mix())
+	var time_to_hit = hit_time - (audio_player.get_playback_position() + AudioServer.get_time_since_last_mix())
 	var velocity = distance / time_to_hit if time_to_hit > 0 else 0
 
 	note.velocity = velocity
 	note.target_y = hit_area.position.y
-	note.position = note_container.position  # Start position
+	#note.position = note_container.position  # Start position
+	#note.position.y = 0
 	note_container.add_child(note)
 
 func _process(delta):
