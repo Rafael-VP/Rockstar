@@ -10,6 +10,7 @@ const PERFECT_WINDOW = 10.0  # Pixels
 const GREAT_WINDOW = 25.0
 const GOOD_WINDOW = 50.0
 const BAD_WINDOW = 75.0
+const MISS_WINDOW = 700
 
 func spawn_note(hit_time: float):
 	var note_scene = preload("res://scenes/note.tscn")
@@ -28,6 +29,11 @@ func _process(delta):
 	# Check for player input
 	if Input.is_action_just_pressed(key_action):
 		check_for_hits()
+		
+	# Check for misses
+	for note in note_container.get_children():
+		if note.global_position.y > MISS_WINDOW:
+			note.register_miss()  # Handle the miss
 
 func check_for_hits():
 	for note in note_container.get_children():
@@ -45,9 +51,3 @@ func check_for_hits():
 		elif distance <= BAD_WINDOW:
 			note.register_hit("Bad")
 			return
-
-	# If no note is close enough, register a Miss
-	# register_miss()
-
-func register_miss():
-	print("Miss")  # Log for now, expand this to reduce score or track misses

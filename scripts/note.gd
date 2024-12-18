@@ -12,8 +12,8 @@ func _process(delta):
 	position.y += velocity * delta
 
 	# If note passes the hit area without being hit
-	if position.y >= target_y + 50 and not hit_registered:
-		register_miss()
+	#if position.y >= target_y + 50 and not hit_registered:
+	#register_miss()
 
 func is_in_hit_window() -> bool:
 	var distance_to_hit = abs(target_y - position.y)
@@ -27,6 +27,8 @@ func register_hit(judgment: String):
 	queue_free()
 
 func register_miss():
+	if hit_registered:
+		return
 	hit_registered = true
-	# print("Miss!")
-	#queue_free()
+	print("Miss!")
+	queue_free()  # Destroy the note
