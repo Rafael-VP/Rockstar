@@ -47,7 +47,34 @@ func _process(delta):
 
 func spawn_note_in_column(column_index: int, hit_time: float):
 	var column = columns[column_index]
-	column.spawn_note(hit_time)
+	var note_scene = preload("res://scenes/note.tscn")
+	var note = note_scene.instantiate()
+	var sprite = note.get_node_or_null("Sprite2D")
+
+	if sprite != null:
+		# Setando os frames do sprite
+		match column_index:
+			0:
+				sprite.frame = 0 
+			1:
+				sprite.frame = 1
+			2:
+				sprite.frame = 2
+			3:
+				sprite.frame = 3
+			_:
+				sprite.frame = 0 #Default
+
+
+	# Calculate velocity (distance/time)
+	var distance = column.hit_area.position.y - column.note_container.position.y
+	var time_to_hit = hit_time - (audio_player.get_playback_position() - AudioServer.get_time_since_last_mix())
+	var velocity = distance / time_to_hit if time_to_hit > 0 else 0
+
+	note.velocity = velocity
+	note.target_y = column.hit_area.position.y
+	note.position = column.note_container.position  # Start position
+	column.note_container.add_child(note)
 
 func _on_beatmap_file_dialog_file_selected(path: String) -> void:
 	# Parse the selected beatmap
