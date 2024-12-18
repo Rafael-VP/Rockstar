@@ -22,20 +22,6 @@ var window_height: float = ProjectSettings.get("display/window/size/viewport_hei
 var sprite_timer: float = 0.0  # Usado para controlar o tempo do sprite
 var current_sprite: Sprite2D = null  # Armazenar o sprite atual para mudar o frame
 
-# Precarregar a cena 'Column' para instanciar
-var column_scene = preload("res://scenes/Column.tscn")
-
-# Instanciar as colunas e adicioná-las ao nó 'Game'
-var columns = []
-
-func _ready():
-	# Instanciar as 4 colunas e adicioná-las como filhos do nó Game
-	for i in range(4):
-		var column_instance = column_scene.instantiate()
-		game_node.add_child(column_instance)
-		columns.append(column_instance)
-		column_instance.name = "Column" + str(i)  # Definir o nome para cada coluna
-
 func spawn_note(hit_time: float):
 	var note_scene = preload("res://scenes/note.tscn")
 	var note = note_scene.instantiate()
@@ -76,8 +62,6 @@ func _process(delta):
 			current_sprite = null  # Reseta o sprite
 
 func mudar_sprite(sprite_name: String):
-	# Depuração: Verifique os filhos do nó Game
-	
 	# Encontra o Sprite correspondente diretamente no nó 'Game'
 	var sprite = game_node.get_node_or_null(sprite_name)  # Buscar diretamente o Sprite no nó Game
 	
