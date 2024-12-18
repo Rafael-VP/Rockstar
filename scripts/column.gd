@@ -32,7 +32,6 @@ func _process(delta):
 func check_for_hits():
 	for note in note_container.get_children():
 		var distance = abs(note.global_position.y - hit_area.global_position.y)  # Distance to HitArea
-		# print(distance)
 
 		if distance <= PERFECT_WINDOW:
 			note.register_hit("Perfect")
