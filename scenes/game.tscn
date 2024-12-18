@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqtm37ygq23d2"]
+[gd_scene load_steps=10 format=3 uid="uid://cqtm37ygq23d2"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_wohga"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_xf05p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqmw5gjp1vxyv" path="res://assets/stage-border.png" id="3_7r17o"]
 [ext_resource type="Script" path="res://scripts/beatmap_parser.gd" id="3_p3j2b"]
 [ext_resource type="PackedScene" uid="uid://dmm2xqwvh6l55" path="res://scenes/column.tscn" id="4_dtnvj"]
+[ext_resource type="Texture2D" uid="uid://dffe6x21gy7xk" path="res://assets/BotaoCinzaNovo.png" id="7_lvduj"]
 
 [sub_resource type="Gradient" id="Gradient_gnwmo"]
 
@@ -37,13 +38,12 @@ position = Vector2(571, 326)
 scale = Vector2(0.613889, 0.613889)
 
 [node name="Wallpaper" type="Sprite2D" parent="Background"]
-position = Vector2(10.5882, 8.10623e-06)
-scale = Vector2(0.978224, 0.977375)
+scale = Vector2(0.561827, 0.561339)
 texture = ExtResource("2_opowj")
 
 [node name="ForegroundAll" type="Sprite2D" parent="Background"]
 modulate = Color(0, 0, 0, 0.203922)
-position = Vector2(6.51541, -0.813904)
+position = Vector2(9.77373, 1.62894)
 scale = Vector2(29.3213, 16.6205)
 texture = SubResource("GradientTexture2D_u068m")
 
@@ -70,19 +70,43 @@ position = Vector2(400, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key0"
 
+[node name="Sprite2D" type="Sprite2D" parent="Column0"]
+position = Vector2(-3.69549e-06, 7.689e-06)
+scale = Vector2(9.31805, 9.31805)
+texture = ExtResource("7_lvduj")
+
 [node name="Column1" parent="." instance=ExtResource("4_dtnvj")]
 position = Vector2(505, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key1"
+
+[node name="Sprite2D" type="Sprite2D" parent="Column1"]
+position = Vector2(-3.69549e-06, 7.689e-06)
+scale = Vector2(9.31805, 9.31805)
+texture = ExtResource("7_lvduj")
 
 [node name="Column2" parent="." instance=ExtResource("4_dtnvj")]
 position = Vector2(610, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key2"
 
+[node name="Sprite2D" type="Sprite2D" parent="Column2"]
+position = Vector2(-3.69549e-06, 7.689e-06)
+scale = Vector2(9.31805, 9.31805)
+texture = ExtResource("7_lvduj")
+
 [node name="Column3" parent="." instance=ExtResource("4_dtnvj")]
 position = Vector2(715, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key3"
+
+[node name="Sprite2D" type="Sprite2D" parent="Column3"]
+position = Vector2(-3.69549e-06, 7.689e-06)
+scale = Vector2(9.31805, 9.31805)
+texture = ExtResource("7_lvduj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(558, 334)
+zoom = Vector2(1.55, 1.55)
 
 [connection signal="file_selected" from="BeatmapFileDialog" to="." method="_on_beatmap_file_dialog_file_selected"]

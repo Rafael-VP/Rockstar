@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmm2xqwvh6l55"]
+[gd_scene load_steps=3 format=3 uid="uid://dmm2xqwvh6l55"]
 
-[ext_resource type="Texture2D" uid="uid://b1jqaua8tit8x" path="res://assets/keyD.png" id="1_6pfin"]
 [ext_resource type="Script" path="res://scripts/column.gd" id="1_ca5fs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skjtm"]
@@ -25,7 +24,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Note" type="Sprite2D" parent="HitArea"]
 position = Vector2(-1.3411e-07, -6.5)
 scale = Vector2(1.48, 1.41901)
-texture = ExtResource("1_6pfin")
 
 [node name="ColliderPerfect" type="CollisionShape2D" parent="HitArea"]
 scale = Vector2(7, 7)
