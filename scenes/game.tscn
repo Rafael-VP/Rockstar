@@ -23,6 +23,7 @@ script = ExtResource("1_wohga")
 title = "Open a File"
 initial_position = 1
 size = Vector2i(400, 400)
+visible = true
 ok_button_text = "Open"
 file_mode = 0
 

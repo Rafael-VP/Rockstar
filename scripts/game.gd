@@ -25,10 +25,13 @@ func start_gameplay():
 	# Load and play music
 	var audio_file = "res://audio/" + beatmap_parser.audio_filename
 	audio_player.stream = load(audio_file)
+	
+	await get_tree().create_timer(2.0).timeout
+	
 	audio_player.play()
 
 	# Record song start time
-	song_start_time = Time.get_ticks_msec() / 1000.0
+	song_start_time = Time.get_ticks_msec() / 1000.0 
 
 	# Copy hit objects to the spawn queue
 	spawn_queue = hit_objects.duplicate()
