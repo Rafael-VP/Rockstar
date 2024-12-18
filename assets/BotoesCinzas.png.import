@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dffe6x21gy7xk"
-path="res://.godot/imported/BotaoCinzaNovo.png-6678cc617e0f4de8027283774e94a194.ctex"
+uid="uid://ip62f4lfatsg"
+path="res://.godot/imported/BotoesCinzas.png-db06fbfa2d53d75b17efe41404c6c293.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BotaoCinzaNovo.png"
-dest_files=["res://.godot/imported/BotaoCinzaNovo.png-6678cc617e0f4de8027283774e94a194.ctex"]
+source_file="res://assets/BotoesCinzas.png"
+dest_files=["res://.godot/imported/BotoesCinzas.png-db06fbfa2d53d75b17efe41404c6c293.ctex"]
 
 [params]
 

@@ -8,7 +8,7 @@ position = Vector2(0, 1)
 script = ExtResource("1_ca5fs")
 
 [node name="NoteContainer" type="Node2D" parent="."]
-position = Vector2(0, -927)
+position = Vector2(2, -845)
 
 [node name="HitArea" type="Node2D" parent="."]
 
@@ -16,3 +16,8 @@ position = Vector2(0, -927)
 position = Vector2(-1.3411e-07, -6.5)
 scale = Vector2(1.48, 1.41901)
 texture = ExtResource("1_6pfin")
+
+[node name="ColliderPerfect" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0, -1)
+scale = Vector2(7, 7)
+shape = SubResource("RectangleShape2D_skjtm")
