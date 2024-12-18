@@ -69,7 +69,7 @@ position = Vector2(400, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key0"
 
-[node name="Seta0" type="Sprite2D" parent="Column0"]
+[node name="Sprite2D" type="Sprite2D" parent="Column0"]
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
@@ -80,7 +80,7 @@ position = Vector2(505, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key1"
 
-[node name="Seta1" type="Sprite2D" parent="Column1"]
+[node name="Sprite2D" type="Sprite2D" parent="Column1"]
 position = Vector2(-3.69549e-06, 7.7486e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
@@ -91,7 +91,7 @@ position = Vector2(610, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key2"
 
-[node name="Seta2" type="Sprite2D" parent="Column2"]
+[node name="Sprite2D" type="Sprite2D" parent="Column2"]
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
@@ -102,7 +102,7 @@ position = Vector2(715, 594)
 scale = Vector2(0.75, 0.75)
 key_action = "key3"
 
-[node name="Seta3" type="Sprite2D" parent="Column3"]
+[node name="Sprite2D" type="Sprite2D" parent="Column3"]
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
