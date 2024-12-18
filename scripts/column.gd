@@ -24,7 +24,7 @@ func spawn_note(hit_time: float):
 
 	# Calculate velocity (distance/time)
 	var distance = hit_area.position.y - note_container.position.y
-	var time_to_hit = hit_time - audio_player.get_playback_position()
+	var time_to_hit = hit_time - (audio_player.get_playback_position() - AudioServer.get_time_since_last_mix())
 	var velocity = distance / time_to_hit if time_to_hit > 0 else 0
 
 	note.velocity = velocity
