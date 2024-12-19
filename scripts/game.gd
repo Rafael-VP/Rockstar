@@ -47,7 +47,7 @@ func _process(delta):
 
 func spawn_note_in_column(column_index: int, hit_time: float):
 	var column = columns[column_index]
-	column.spawn_note(hit_time)
+	column.spawn_note(hit_time, column_index)
 
 func _on_beatmap_file_dialog_file_selected(path: String) -> void:
 	# Parse the selected beatmap

@@ -10,7 +10,6 @@ extends Node2D
 @onready var note_container = $NoteContainer
 @onready var hit_area = $HitArea
 @onready var audio_player = get_parent().get_node("AudioStreamPlayer")
-
 # Hit windows (adjust these based on testing)
 const PERFECT_WINDOW = 10.0  # Pixels
 const GREAT_WINDOW = 25.0
@@ -22,9 +21,23 @@ var window_height: float = ProjectSettings.get("display/window/size/viewport_hei
 var sprite_timer: float = 0.0  # Usado para controlar o tempo do sprite
 var current_sprite: Sprite2D = null  # Armazenar o sprite atual para mudar o frame
 
-func spawn_note(hit_time: float):
+func spawn_note(hit_time: float, column_index: int):
 	var note_scene = preload("res://scenes/note.tscn")
 	var note = note_scene.instantiate()
+	var sprite = note.get_node_or_null("Sprite2D")
+		
+	if sprite != null:
+		match column_index:
+			0:
+				sprite.frame = 0
+			1:
+				sprite.frame = 1
+			2:
+				sprite.frame = 2
+			3:
+				sprite.frame = 3
+			_:
+				sprite.frame = 0
 
 	# Calculate velocity (distance/time)
 	var distance = hit_area.position.y - note_container.position.y
