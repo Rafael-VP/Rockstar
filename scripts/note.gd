@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var combo_meter = get_node("/root/Game/ComboMeter")
 @onready var judgment_meter = get_node("/root/Game/JudgmentMeter")
+@onready var score_meter = get_node("/root/Game/Score")
 
 var velocity: float  # Speed at which the note moves
 var target_y: float  # Y-coordinate of the hit area
@@ -22,9 +23,10 @@ func register_hit(judgment: String):
 	if hit_registered:
 		return
 	hit_registered = true
-	print("Hit: ", judgment)
+	#print("Hit: ", judgment)
 	combo_meter.increase()
 	judgment_meter.update(judgment)
+	score_meter.increase(judgment)
 	queue_free()
 
 func register_miss():
@@ -33,5 +35,5 @@ func register_miss():
 	hit_registered = true
 	print("Miss!")
 	combo_meter.miss()
-	judgment_meter.update("miss")
+	judgment_meter.update("Miss")
 	queue_free()  # Destroy the note

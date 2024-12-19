@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqtm37ygq23d2"]
+[gd_scene load_steps=13 format=3 uid="uid://cqtm37ygq23d2"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_wohga"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_xf05p"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/judgment.gd" id="7_hm13t"]
 [ext_resource type="Texture2D" uid="uid://ip62f4lfatsg" path="res://assets/BotoesCinzas.png" id="7_u0jnv"]
 [ext_resource type="Script" path="res://scripts/combo_meter.gd" id="8_1xgpc"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="10_msef3"]
 
 [sub_resource type="Gradient" id="Gradient_gnwmo"]
 
@@ -126,6 +127,13 @@ offset_top = 313.0
 offset_right = 577.0
 offset_bottom = 353.0
 script = ExtResource("8_1xgpc")
+
+[node name="Score" type="RichTextLabel" parent="."]
+offset_left = 1024.0
+offset_top = 21.0
+offset_right = 1064.0
+offset_bottom = 61.0
+script = ExtResource("10_msef3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(558, 334)
