@@ -3,38 +3,39 @@ extends Node2D
 @onready var audio_player = $AudioStreamPlayer
 @onready var beatmap_dialog = $BeatmapFileDialog
 @onready var columns = [$Column0, $Column1, $Column2, $Column3]
+@onready var pause_menu = $PauseMenu  # Adicione isso para referenciar o menu de pausa
 
-# Variables
+# Variáveis
 var beatmap_parser = preload("res://scripts/beatmap_parser.gd").new()
 var hit_objects = []
 
-var spawn_queue = []  # Queue for hit objects to spawn
+var spawn_queue = []  # Fila para os objetos de hit a serem gerados
 var song_start_time = 0.0
 
 func _ready():
-	# Set up BeatmapFileDialog
+	# Configurar BeatmapFileDialog
 	beatmap_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	beatmap_dialog.access = FileDialog.ACCESS_RESOURCES
 	beatmap_dialog.filters = ["*.osu ; osu! Beatmap Files"]
 
-	# Open the beatmap dialog
+	# Abrir o diálogo de beatmap
 	beatmap_dialog.popup_centered()
 
 func start_gameplay():
-	# Load and play music
+	# Carregar e tocar a música
 	var audio_file = "res://audio/" + beatmap_parser.audio_filename
 	audio_player.stream = load(audio_file)
 	await get_tree().create_timer(2.0).timeout
 	audio_player.play()
 
-	# Record song start time
+	# Registrar o tempo de início da música
 	song_start_time = Time.get_ticks_msec() / 1000.0
 
-	# Copy hit objects to the spawn queue
+	# Copiar objetos de hit para a fila de spawn
 	spawn_queue = hit_objects.duplicate()
 
 func _process(delta):
-	# Dynamically spawn notes based on playback position
+	# Gerar notas dinamicamente com base na posição de reprodução
 	if spawn_queue.is_empty():
 		return
 
@@ -50,9 +51,20 @@ func spawn_note_in_column(column_index: int, hit_time: float):
 	column.spawn_note(hit_time, column_index)
 
 func _on_beatmap_file_dialog_file_selected(path: String) -> void:
-	# Parse the selected beatmap
+	# Analisar o beatmap selecionado
 	if beatmap_parser.parse_beatmap(path):
 		hit_objects = beatmap_parser.hit_objects
 		start_gameplay()
 	else:
 		print("Failed to load beatmap.")
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if get_tree().paused:
+			# Já está pausado, então retomar
+			get_tree().paused = false
+			pause_menu.visible = false
+		else:
+			# Pausar e mostrar o menu de pausa
+			get_tree().paused = true
+			pause_menu.visible = true

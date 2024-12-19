@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqtm37ygq23d2"]
+[gd_scene load_steps=14 format=3 uid="uid://cqtm37ygq23d2"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_wohga"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_xf05p"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ip62f4lfatsg" path="res://assets/BotoesCinzas.png" id="7_u0jnv"]
 [ext_resource type="Script" path="res://scripts/combo_meter.gd" id="8_1xgpc"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="10_msef3"]
+[ext_resource type="Script" path="res://scenes/PauseMenu.gd" id="11_17yil"]
 
 [sub_resource type="Gradient" id="Gradient_gnwmo"]
 
@@ -143,4 +144,25 @@ script = ExtResource("10_msef3")
 position = Vector2(558, 334)
 zoom = Vector2(1.72, 1.72)
 
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_17yil")
+
+[node name="ContinueButton" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Continuar"
+
+[node name="QuitButton" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Sair"
+
 [connection signal="file_selected" from="BeatmapFileDialog" to="." method="_on_beatmap_file_dialog_file_selected"]
+[connection signal="pressed" from="PauseMenu/ContinueButton" to="PauseMenu" method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="PauseMenu/QuitButton" to="PauseMenu" method="_on_QuitButton_pressed"]
