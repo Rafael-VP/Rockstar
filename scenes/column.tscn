@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmm2xqwvh6l55"]
+[gd_scene load_steps=3 format=3 uid="uid://dmm2xqwvh6l55"]
 
 [ext_resource type="Script" path="res://scripts/column.gd" id="1_ca5fs"]
+[ext_resource type="Texture2D" uid="uid://ip62f4lfatsg" path="res://assets/BotoesCinzas.png" id="2_vfbkj"]
 
 [node name="Column" type="Node2D"]
 position = Vector2(0, 1)
@@ -10,3 +11,10 @@ script = ExtResource("1_ca5fs")
 
 [node name="NoteContainer" type="Node2D" parent="."]
 position = Vector2(0, -927)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(-3.69549e-06, 7.7486e-06)
+scale = Vector2(9.31805, 9.31805)
+texture = ExtResource("2_vfbkj")
+hframes = 2

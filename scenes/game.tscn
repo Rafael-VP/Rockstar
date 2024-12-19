@@ -72,6 +72,7 @@ scale = Vector2(0.75, 0.75)
 key_action = "key0"
 
 [node name="Seta0" type="Sprite2D" parent="Column0"]
+visible = false
 show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
@@ -84,6 +85,7 @@ scale = Vector2(0.75, 0.75)
 key_action = "key1"
 
 [node name="Seta1" type="Sprite2D" parent="Column1"]
+visible = false
 show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.7486e-06)
 scale = Vector2(9.31805, 9.31805)
@@ -96,6 +98,7 @@ scale = Vector2(0.75, 0.75)
 key_action = "key2"
 
 [node name="Seta2" type="Sprite2D" parent="Column2"]
+visible = false
 show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
@@ -108,6 +111,7 @@ scale = Vector2(0.75, 0.75)
 key_action = "key3"
 
 [node name="Seta3" type="Sprite2D" parent="Column3"]
+visible = false
 show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
