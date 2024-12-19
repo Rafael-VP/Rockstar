@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqtm37ygq23d2"]
+[gd_scene load_steps=12 format=3 uid="uid://cqtm37ygq23d2"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_wohga"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_xf05p"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bqmw5gjp1vxyv" path="res://assets/stage-border.png" id="3_7r17o"]
 [ext_resource type="Script" path="res://scripts/beatmap_parser.gd" id="3_p3j2b"]
 [ext_resource type="PackedScene" uid="uid://dmm2xqwvh6l55" path="res://scenes/column.tscn" id="4_dtnvj"]
+[ext_resource type="Script" path="res://scripts/judgment.gd" id="7_hm13t"]
 [ext_resource type="Texture2D" uid="uid://ip62f4lfatsg" path="res://assets/BotoesCinzas.png" id="7_u0jnv"]
+[ext_resource type="Script" path="res://scripts/combo_meter.gd" id="8_1xgpc"]
 
 [sub_resource type="Gradient" id="Gradient_gnwmo"]
 
@@ -26,8 +28,6 @@ initial_position = 1
 size = Vector2i(400, 400)
 ok_button_text = "Open"
 file_mode = 0
-
-[node name="NoteSpawner" type="Node2D" parent="."]
 
 [node name="BeatmapParser" type="Node2D" parent="."]
 script = ExtResource("3_p3j2b")
@@ -71,6 +71,7 @@ scale = Vector2(0.75, 0.75)
 key_action = "key0"
 
 [node name="Seta0" type="Sprite2D" parent="Column0"]
+show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
@@ -82,6 +83,7 @@ scale = Vector2(0.75, 0.75)
 key_action = "key1"
 
 [node name="Seta1" type="Sprite2D" parent="Column1"]
+show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.7486e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
@@ -93,6 +95,7 @@ scale = Vector2(0.75, 0.75)
 key_action = "key2"
 
 [node name="Seta2" type="Sprite2D" parent="Column2"]
+show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
@@ -104,10 +107,25 @@ scale = Vector2(0.75, 0.75)
 key_action = "key3"
 
 [node name="Seta3" type="Sprite2D" parent="Column3"]
+show_behind_parent = true
 position = Vector2(-3.69549e-06, 7.689e-06)
 scale = Vector2(9.31805, 9.31805)
 texture = ExtResource("7_u0jnv")
 hframes = 2
+
+[node name="JudgmentMeter" type="RichTextLabel" parent="."]
+offset_left = 525.0
+offset_top = 355.0
+offset_right = 633.0
+offset_bottom = 395.0
+script = ExtResource("7_hm13t")
+
+[node name="ComboMeter" type="RichTextLabel" parent="."]
+offset_left = 537.0
+offset_top = 313.0
+offset_right = 577.0
+offset_bottom = 353.0
+script = ExtResource("8_1xgpc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(558, 334)

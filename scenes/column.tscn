@@ -6,7 +6,7 @@
 position = Vector2(0, 1)
 script = ExtResource("1_ca5fs")
 
+[node name="HitArea" type="Node2D" parent="."]
+
 [node name="NoteContainer" type="Node2D" parent="."]
 position = Vector2(0, -927)
-
-[node name="HitArea" type="Node2D" parent="."]

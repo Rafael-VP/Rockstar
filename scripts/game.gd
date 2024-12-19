@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var audio_player = $AudioStreamPlayer
 @onready var beatmap_dialog = $BeatmapFileDialog
-
 @onready var columns = [$Column0, $Column1, $Column2, $Column3]
 
 # Variables
@@ -25,6 +24,7 @@ func start_gameplay():
 	# Load and play music
 	var audio_file = "res://audio/" + beatmap_parser.audio_filename
 	audio_player.stream = load(audio_file)
+	await get_tree().create_timer(2.0).timeout
 	audio_player.play()
 
 	# Record song start time

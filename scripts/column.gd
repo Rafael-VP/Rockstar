@@ -4,20 +4,21 @@ extends Node2D
 @export var key_action_1: String = "key1"  # Entrada para a coluna 1
 @export var key_action_2: String = "key2"  # Entrada para a coluna 2
 @export var key_action_3: String = "key3"  # Entrada para a coluna 3
+@export var key_action: String  # Input action for this column
 
 @onready var game_node = self  # O nó 'Game' é o nó atual onde o script está anexado
-@export var key_action: String  # Input action for this column
 @onready var note_container = $NoteContainer
 @onready var hit_area = $HitArea
 @onready var audio_player = get_parent().get_node("AudioStreamPlayer")
+
 # Hit windows (adjust these based on testing)
-const PERFECT_WINDOW = 10.0  # Pixels
-const GREAT_WINDOW = 25.0
+const PERFECT_WINDOW = 15.0  # Pixels
+const GREAT_WINDOW = 30.0
 const GOOD_WINDOW = 50.0
 const BAD_WINDOW = 75.0
 const MISS_WINDOW = 700
-var window_height: float = ProjectSettings.get("display/window/size/viewport_height")
 
+# var window_height: float = ProjectSettings.get("display/window/size/viewport_height")
 var sprite_timer: float = 0.0  # Usado para controlar o tempo do sprite
 var current_sprite: Sprite2D = null  # Armazenar o sprite atual para mudar o frame
 
@@ -51,20 +52,21 @@ func spawn_note(hit_time: float, column_index: int):
 func _process(delta):
 	# Check for player input
 	if Input.is_action_just_pressed(key_action):
-		check_for_hits()
+		await check_for_hits()
 		
 	# Check for misses
 	for note in note_container.get_children():
 		if note.global_position.y > MISS_WINDOW:
 			note.register_miss()  # Handle the miss
+
 	# Verifica cada ação e chama o sprite correspondente
 	if Input.is_action_just_pressed(key_action_0):
 		mudar_sprite("Seta0")
-	elif Input.is_action_just_pressed(key_action_1):
+	if Input.is_action_just_pressed(key_action_1):
 		mudar_sprite("Seta1")
-	elif Input.is_action_just_pressed(key_action_2):
+	if Input.is_action_just_pressed(key_action_2):
 		mudar_sprite("Seta2")
-	elif Input.is_action_just_pressed(key_action_3):
+	if Input.is_action_just_pressed(key_action_3):
 		mudar_sprite("Seta3")
 
 	# Verifica se o tempo do timer expirou para voltar o frame do sprite
@@ -73,6 +75,7 @@ func _process(delta):
 		if sprite_timer <= 0.0:
 			current_sprite.frame = 0  # Retorna o frame para 0
 			current_sprite = null  # Reseta o sprite
+
 
 func mudar_sprite(sprite_name: String):
 	# Encontra o Sprite correspondente diretamente no nó 'Game'
