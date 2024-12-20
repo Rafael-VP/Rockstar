@@ -3,6 +3,4 @@
 /android/
 
 # Project ignores
-audio/
-beatmaps/
 *.tmp

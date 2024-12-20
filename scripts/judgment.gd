@@ -1,6 +1,9 @@
 extends RichTextLabel
 
 var current_timer: Timer = null
+var judgments = {"Perfect": "[color=yellow]Perfect[/color]", "Great": "[color=green]Great[/color]",
+				 "Good": "[color=blue]Good[/color]", "Bad": "[color=pink]Bad[/color]",
+				 "Miss": "[color=red]Miss[/color]"}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +16,7 @@ func _process(_delta: float) -> void:
 
 
 func update(judgment: String):
-	text = "[center]%s[/center]" % judgment
+	text = "[center]%s[/center]" % judgments[judgment]
 
 	# Cancel the previous timer if it exists
 	if current_timer:
