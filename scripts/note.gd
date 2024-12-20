@@ -23,7 +23,6 @@ func register_hit(judgment: String):
 	if hit_registered:
 		return
 	hit_registered = true
-	#print("Hit: ", judgment)
 	combo_meter.increase()
 	judgment_meter.update(judgment)
 	score_meter.increase(judgment)
@@ -33,7 +32,6 @@ func register_miss():
 	if hit_registered:
 		return
 	hit_registered = true
-	print("Miss!")
 	combo_meter.miss()
 	judgment_meter.update("Miss")
 	queue_free()  # Destroy the note

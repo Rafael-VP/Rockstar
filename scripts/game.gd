@@ -40,8 +40,7 @@ func _process(_delta):
 	if spawn_queue.is_empty():
 		return
 
-	var current_time = (audio_player.get_playback_position())
-	#var first = spawn_queue.front()
+	var current_time = (audio_player.get_playback_position() + AudioServer.get_time_since_last_mix())
 	while not spawn_queue.is_empty() and spawn_queue[0]["time"] / 1000.0 <= current_time + 1.3:
 		var hit_object = spawn_queue.pop_front()
 		var column_index = hit_object["column"]

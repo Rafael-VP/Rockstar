@@ -3,7 +3,6 @@ extends Node2D
 @export var key_action: String  # Input action for this column
 @export var sound_effect: AudioStream
 
-#@onready var game_node = self  # O nó 'Game' é o nó atual onde o script está anexado
 @onready var note_container = $NoteContainer
 @onready var hit_area = $HitArea
 @onready var hit_area_sprite = $Sprite
@@ -16,7 +15,6 @@ const GOOD_WINDOW = 50.0
 const BAD_WINDOW = 75.0
 const MISS_WINDOW = 700
 
-# var window_height: float = ProjectSettings.get("display/window/size/viewport_height")
 var sprite_timer: float = 0.0  # Usado para controlar o tempo do sprite
 var current_sprite: Sprite2D = null  # Armazenar o sprite atual para mudar o frame
 
@@ -29,6 +27,7 @@ func spawn_note(hit_time: float, column_index: int):
 	# Calculate velocity (distance/time)
 	var distance = hit_area.position.y - note_container.position.y
 	var time_to_hit = hit_time - (audio_player.get_playback_position() + AudioServer.get_time_since_last_mix())
+	time_to_hit = time_to_hit + 0.60 if (time_to_hit < 0.6) else time_to_hit
 	var velocity = distance / time_to_hit if time_to_hit > 0 else 0
 
 	note.velocity = velocity
