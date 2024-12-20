@@ -35,7 +35,7 @@ func spawn_note(hit_time: float, column_index: int):
 	note.target_y = hit_area.position.y
 	note_container.add_child(note)
 
-func _process(delta):
+func _process(_delta):
 	# Check for player input
 	if Input.is_action_just_pressed(key_action):
 		$AudioStreamPlayer.stream = sound_effect

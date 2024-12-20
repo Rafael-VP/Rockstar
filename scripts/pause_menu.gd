@@ -17,7 +17,7 @@ func testEsc():
 	elif Input.is_action_just_pressed("Pause") and get_tree().paused:
 		resume()
 
-func _process(delta):
+func _process(_delta):
 	testEsc()
 
 func _on_continue_button_pressed() -> void:

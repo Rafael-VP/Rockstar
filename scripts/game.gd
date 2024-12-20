@@ -35,13 +35,14 @@ func start_gameplay():
 	# Copiar objetos de hit para a fila de spawn
 	spawn_queue = hit_objects.duplicate()
 
-func _process(delta):
+func _process(_delta):
 	# Gerar notas dinamicamente com base na posição de reprodução
 	if spawn_queue.is_empty():
 		return
 
-	var current_time = (Time.get_ticks_msec() / 1000.0) - song_start_time
-	while not spawn_queue.is_empty() and spawn_queue[0]["time"] / 1000.0 <= current_time + 2.0:
+	var current_time = (audio_player.get_playback_position())
+	#var first = spawn_queue.front()
+	while not spawn_queue.is_empty() and spawn_queue[0]["time"] / 1000.0 <= current_time + 1.3:
 		var hit_object = spawn_queue.pop_front()
 		var column_index = hit_object["column"]
 		var hit_time = hit_object["time"] / 1000.0

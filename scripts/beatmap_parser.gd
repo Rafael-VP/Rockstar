@@ -6,6 +6,8 @@ class_name BeatmapParser
 var audio_filename = ""
 var hit_objects = []
 
+const COLUMN_COUNT = 4 
+
 func parse_beatmap(file_path: String):
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	if file == null:
@@ -34,12 +36,5 @@ func parse_beatmap(file_path: String):
 	return true
 
 func get_column_from_x(x: int) -> int:
-	# Converts x-coordinate to column index (4-key mode)
-	if x < 128:
-		return 0
-	elif x < 256:
-		return 1
-	elif x < 384:
-		return 2
-	else:
-		return 3
+	# Converts x-coordinate to column index
+	return clamp(floor(x * COLUMN_COUNT / 512), 0, COLUMN_COUNT-1)
