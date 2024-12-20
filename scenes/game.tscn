@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqtm37ygq23d2"]
+[gd_scene load_steps=16 format=3 uid="uid://cqtm37ygq23d2"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_wohga"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_xf05p"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/beatmap_parser.gd" id="3_p3j2b"]
 [ext_resource type="PackedScene" uid="uid://dmm2xqwvh6l55" path="res://scenes/column.tscn" id="4_dtnvj"]
 [ext_resource type="Script" path="res://scripts/judgment.gd" id="7_hm13t"]
-[ext_resource type="Texture2D" uid="uid://ip62f4lfatsg" path="res://assets/BotoesCinzas.png" id="7_u0jnv"]
 [ext_resource type="Script" path="res://scripts/combo_meter.gd" id="8_1xgpc"]
 [ext_resource type="FontFile" uid="uid://b0jcaf3n28a2n" path="res://assets/Minecraft.ttf" id="10_71y55"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="10_msef3"]
@@ -78,52 +77,20 @@ position = Vector2(392, 570)
 scale = Vector2(0.75, 0.75)
 key_action = "key0"
 
-[node name="Seta0" type="Sprite2D" parent="Column0"]
-visible = false
-show_behind_parent = true
-position = Vector2(-3.69549e-06, 7.689e-06)
-scale = Vector2(9.3, 9.3)
-texture = ExtResource("7_u0jnv")
-hframes = 2
-
 [node name="Column1" parent="." instance=ExtResource("4_dtnvj")]
 position = Vector2(504, 570)
 scale = Vector2(0.75, 0.75)
 key_action = "key1"
-
-[node name="Seta1" type="Sprite2D" parent="Column1"]
-visible = false
-show_behind_parent = true
-position = Vector2(-3.69549e-06, 7.7486e-06)
-scale = Vector2(9.3, 9.3)
-texture = ExtResource("7_u0jnv")
-hframes = 2
 
 [node name="Column2" parent="." instance=ExtResource("4_dtnvj")]
 position = Vector2(616, 570)
 scale = Vector2(0.75, 0.75)
 key_action = "key2"
 
-[node name="Seta2" type="Sprite2D" parent="Column2"]
-visible = false
-show_behind_parent = true
-position = Vector2(-3.69549e-06, 7.689e-06)
-scale = Vector2(9.3, 9.3)
-texture = ExtResource("7_u0jnv")
-hframes = 2
-
 [node name="Column3" parent="." instance=ExtResource("4_dtnvj")]
 position = Vector2(728, 570)
 scale = Vector2(0.75, 0.75)
 key_action = "key3"
-
-[node name="Seta3" type="Sprite2D" parent="Column3"]
-visible = false
-show_behind_parent = true
-position = Vector2(-3.69549e-06, 7.689e-06)
-scale = Vector2(9.3, 9.3)
-texture = ExtResource("7_u0jnv")
-hframes = 2
 
 [node name="JudgmentMeter" type="RichTextLabel" parent="."]
 offset_left = 510.0
@@ -144,11 +111,12 @@ bbcode_enabled = true
 script = ExtResource("8_1xgpc")
 
 [node name="Score" type="RichTextLabel" parent="."]
-offset_left = 875.0
+offset_left = 808.0
 offset_top = 34.0
-offset_right = 1075.0
-offset_bottom = 74.0
+offset_right = 1111.0
+offset_bottom = 135.0
 theme_override_fonts/normal_font = ExtResource("10_71y55")
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 script = ExtResource("10_msef3")
 
@@ -177,9 +145,9 @@ offset_bottom = 748.0
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 offset_left = 435.0
-offset_top = 230.0
+offset_top = 300.0
 offset_right = 685.0
-offset_bottom = 290.0
+offset_bottom = 360.0
 theme_override_fonts/font = ExtResource("10_71y55")
 text = "Sair"
 icon_alignment = 1
@@ -192,11 +160,12 @@ anchor_top = 0.925
 anchor_right = -0.025
 anchor_bottom = 0.925
 offset_left = 436.0
-offset_top = 263.0
+offset_top = 193.0
 offset_right = 686.0
-offset_bottom = 323.0
+offset_bottom = 253.0
 theme_override_fonts/font = ExtResource("10_71y55")
-text = "Continue"
+text = "Continuar
+"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
