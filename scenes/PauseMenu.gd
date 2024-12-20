@@ -15,6 +15,10 @@ func _ready():
 	quit_button.text = "Sair"
 
 func _on_ContinueButton_pressed():
+	# Utilize um método de chamada adiado para garantir que o jogo seja despausado corretamente
+	call_deferred("_unpause_game")
+
+func _unpause_game():
 	get_tree().paused = false
 	self.visible = false
 

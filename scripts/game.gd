@@ -8,6 +8,7 @@ extends Node2D
 # Variáveis
 var beatmap_parser = preload("res://scripts/beatmap_parser.gd").new()
 var hit_objects = []
+var paused = false
 
 var spawn_queue = []  # Fila para os objetos de hit a serem gerados
 var song_start_time = 0.0
@@ -57,14 +58,4 @@ func _on_beatmap_file_dialog_file_selected(path: String) -> void:
 		start_gameplay()
 	else:
 		print("Failed to load beatmap.")
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		if get_tree().paused:
-			# Já está pausado, então retomar
-			get_tree().paused = false
-			pause_menu.visible = false
-		else:
-			# Pausar e mostrar o menu de pausa
-			get_tree().paused = true
-			pause_menu.visible = true
+			

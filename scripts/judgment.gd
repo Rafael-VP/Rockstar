@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 
 func update(judgment: String):
-	text = judgment
+	text = "[center]%s[/center]" % judgment
 
 	# Cancel the previous timer if it exists
 	if current_timer:

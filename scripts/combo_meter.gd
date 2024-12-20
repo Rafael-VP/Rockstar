@@ -14,9 +14,9 @@ func _process(delta: float) -> void:
 
 func increase():
 	combo += 1
-	text = str(combo)
+	text = "[center]%s[/center]" % combo
 
 
 func miss():
 	combo = 0
-	text = ""
+	text = "[center]%s[/center]" % combo
