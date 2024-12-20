@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var key_action: String  # Input action for this column
+@export var sound_effect: AudioStream
 
 #@onready var game_node = self  # O nó 'Game' é o nó atual onde o script está anexado
 @onready var note_container = $NoteContainer
@@ -37,6 +38,8 @@ func spawn_note(hit_time: float, column_index: int):
 func _process(delta):
 	# Check for player input
 	if Input.is_action_just_pressed(key_action):
+		$AudioStreamPlayer.stream = sound_effect
+		$AudioStreamPlayer.play()
 		hit_area_sprite.frame = 1
 		await check_for_hits()
 	

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmm2xqwvh6l55"]
+[gd_scene load_steps=4 format=3 uid="uid://dmm2xqwvh6l55"]
 
 [ext_resource type="Script" path="res://scripts/column.gd" id="1_ca5fs"]
+[ext_resource type="AudioStream" uid="uid://bj564bxyy8wwh" path="res://assets/hit-sound.mp3" id="2_ap861"]
 [ext_resource type="Texture2D" uid="uid://ip62f4lfatsg" path="res://assets/BotoesCinzas.png" id="2_vfbkj"]
 
 [node name="Column" type="Node2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_ca5fs")
+sound_effect = ExtResource("2_ap861")
 
 [node name="HitArea" type="Node2D" parent="."]
 
@@ -18,3 +20,6 @@ position = Vector2(-3.69549e-06, 7.7486e-06)
 scale = Vector2(9.3, 9.3)
 texture = ExtResource("2_vfbkj")
 hframes = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -0.3
