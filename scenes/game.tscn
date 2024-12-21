@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqtm37ygq23d2"]
+[gd_scene load_steps=18 format=3 uid="uid://cqtm37ygq23d2"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_wohga"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_xf05p"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scripts/score.gd" id="10_msef3"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="11_872b5"]
 [ext_resource type="Shader" path="res://scenes/pause_menu.gdshader" id="12_eor2t"]
+[ext_resource type="Texture2D" uid="uid://br2xxprnn5o6u" path="res://assets/healthbar.png" id="13_yp4h4"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="14_jte2l"]
 
 [sub_resource type="Gradient" id="Gradient_gnwmo"]
 
@@ -168,6 +170,23 @@ text = "Continuar
 "
 icon_alignment = 1
 vertical_icon_alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 86.0
+offset_top = 132.0
+offset_right = 296.0
+offset_bottom = 159.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = 815.0
+offset_top = 635.0
+offset_right = 1480.0
+offset_bottom = 653.0
+rotation = -1.5708
+scale = Vector2(0.61, 0.61)
+value = 100.0
+texture_progress = ExtResource("13_yp4h4")
+script = ExtResource("14_jte2l")
 
 [connection signal="file_selected" from="BeatmapFileDialog" to="." method="_on_beatmap_file_dialog_file_selected"]
 [connection signal="pressed" from="PauseMenu/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
