@@ -67,3 +67,9 @@ func spawn_note_in_column(column_index: int, hit_time: float):
 #	else:
 #		print("Failed to load beatmap.")
 			
+
+
+func _on_audio_stream_player_finished() -> void:
+	# Beatmap is over
+	get_tree().change_scene_to_file("res://scenes/song_selection.tscn") 
+	pass # Replace with function body.

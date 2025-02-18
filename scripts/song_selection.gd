@@ -1,6 +1,7 @@
 extends Control
 
 @onready var song_list = $ScrollContainer/VBoxContainer
+
 var beatmap_dir = "res://beatmaps/"
 var fv
 

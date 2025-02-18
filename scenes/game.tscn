@@ -171,12 +171,6 @@ text = "Continuar
 icon_alignment = 1
 vertical_icon_alignment = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 86.0
-offset_top = 132.0
-offset_right = 296.0
-offset_bottom = 159.0
-
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = 815.0
 offset_top = 635.0
@@ -188,6 +182,7 @@ value = 100.0
 texture_progress = ExtResource("13_yp4h4")
 script = ExtResource("14_jte2l")
 
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="file_selected" from="BeatmapFileDialog" to="." method="_on_beatmap_file_dialog_file_selected"]
 [connection signal="pressed" from="PauseMenu/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]
