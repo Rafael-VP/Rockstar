@@ -12,20 +12,28 @@ var paused = false
 
 var spawn_queue = []  # Fila para os objetos de hit a serem gerados
 var song_start_time = 0.0
+var audio_path
 
 func _ready():
+	hit_objects = beatmap_parser.hit_objects
+	start_gameplay(audio_path)
 	# Configurar BeatmapFileDialog
-	beatmap_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
-	beatmap_dialog.access = FileDialog.ACCESS_RESOURCES
-	beatmap_dialog.filters = ["*.osu ; osu! Beatmap Files"]
+	# beatmap_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	# beatmap_dialog.access = FileDialog.ACCESS_RESOURCES
+	# beatmap_dialog.filters = ["*.osu ; osu! Beatmap Files"]
 
 	# Abrir o diálogo de beatmap
-	beatmap_dialog.popup_centered()
+	# beatmap_dialog.popup_centered()
 
-func start_gameplay():
+func initialize(audio, beatmap):
+	beatmap_parser.parse_beatmap(beatmap)
+	print(audio)
+	audio_path = audio
+
+func start_gameplay(audio):
 	# Carregar e tocar a música
-	var audio_file = "res://audio/" + beatmap_parser.audio_filename
-	audio_player.stream = load(audio_file)
+	# var audio_file = "res://audio/" + beatmap_parser.audio_filename
+	audio_player.stream = load(audio)
 	await get_tree().create_timer(2.0).timeout
 	audio_player.play()
 
@@ -51,11 +59,11 @@ func spawn_note_in_column(column_index: int, hit_time: float):
 	var column = columns[column_index]
 	column.spawn_note(hit_time, column_index)
 
-func _on_beatmap_file_dialog_file_selected(path: String) -> void:
-	# Analisar o beatmap selecionado
-	if beatmap_parser.parse_beatmap(path):
-		hit_objects = beatmap_parser.hit_objects
-		start_gameplay()
-	else:
-		print("Failed to load beatmap.")
+#func _on_beatmap_file_dialog_file_selected(path: String) -> void:
+#	# Analisar o beatmap selecionado
+#	if beatmap_parser.parse_beatmap(path):
+#		hit_objects = beatmap_parser.hit_objects
+#		start_gameplay()
+#	else:
+#		print("Failed to load beatmap.")
 			

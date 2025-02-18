@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b65povn8b4vin"]
+
+[ext_resource type="Script" path="res://scripts/song_selection.gd" id="1_geaex"]
+[ext_resource type="Texture2D" uid="uid://dlpy0n7vfcvls" path="res://assets/background.png" id="2_nef0v"]
+
+[node name="SongSelection" type="Control"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_geaex")
+
+[node name="Wallpaper" type="Sprite2D" parent="."]
+position = Vector2(958, 542)
+scale = Vector2(0.478025, 0.477611)
+texture = ExtResource("2_nef0v")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 34.0
+offset_right = 872.0
+offset_bottom = 1076.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2

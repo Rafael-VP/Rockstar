@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var combo_meter = get_node("/root/Game/ComboMeter")
-@onready var judgment_meter = get_node("/root/Game/JudgmentMeter")
-@onready var score_meter = get_node("/root/Game/Score")
-@onready var health_bar = get_node("/root/Game/HealthBar")
+@onready var combo_meter = get_node("/root/SongSelection/Game/ComboMeter")
+@onready var judgment_meter = get_node("/root/SongSelection/Game/JudgmentMeter")
+@onready var score_meter = get_node("/root/SongSelection/Game/Score")
+@onready var health_bar = get_node("/root/SongSelection/Game/HealthBar")
 
 var velocity: float  # Speed at which the note moves
 var target_y: float  # Y-coordinate of the hit area
