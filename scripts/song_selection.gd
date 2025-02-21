@@ -148,3 +148,7 @@ func _on_song_selected(osu_path: String, audio_path: String):
 	var beatmap_instance = beatmap_scene.instantiate()
 	beatmap_instance.initialize(audio_path, osu_path)
 	get_tree().current_scene.add_child(beatmap_instance)
+
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

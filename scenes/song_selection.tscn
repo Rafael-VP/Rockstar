@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b65povn8b4vin"]
+[gd_scene load_steps=4 format=3 uid="uid://b65povn8b4vin"]
 
 [ext_resource type="Script" path="res://scripts/song_selection.gd" id="1_geaex"]
 [ext_resource type="Texture2D" uid="uid://dlpy0n7vfcvls" path="res://assets/background.png" id="2_nef0v"]
+[ext_resource type="FontFile" uid="uid://b0jcaf3n28a2n" path="res://assets/Minecraft.ttf" id="3_bpvh3"]
 
 [node name="SongSelection" type="Control"]
 custom_minimum_size = Vector2(5, 5)
@@ -18,9 +19,21 @@ texture = ExtResource("2_nef0v")
 custom_minimum_size = Vector2(5, 5)
 layout_mode = 0
 offset_left = 12.0
-offset_top = 34.0
 offset_right = 872.0
 offset_bottom = 1076.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1744.0
+offset_top = 16.0
+offset_right = 1896.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("3_bpvh3")
+theme_override_font_sizes/font_size = 25
+text = "Main Menu
+"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

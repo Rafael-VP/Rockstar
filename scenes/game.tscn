@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqtm37ygq23d2"]
+[gd_scene load_steps=19 format=3 uid="uid://cqtm37ygq23d2"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_wohga"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_xf05p"]
@@ -14,11 +14,12 @@
 [ext_resource type="Shader" path="res://scenes/pause_menu.gdshader" id="12_eor2t"]
 [ext_resource type="Texture2D" uid="uid://br2xxprnn5o6u" path="res://assets/healthbar.png" id="13_yp4h4"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="14_jte2l"]
+[ext_resource type="Script" path="res://scripts/visualizer.gd" id="15_3hdxe"]
 
-[sub_resource type="Gradient" id="Gradient_gnwmo"]
+[sub_resource type="Gradient" id="Gradient_64wx8"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_u068m"]
-gradient = SubResource("Gradient_gnwmo")
+gradient = SubResource("Gradient_64wx8")
 fill_to = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmldm"]
@@ -29,6 +30,7 @@ shader_parameter/lod = 1.91
 script = ExtResource("1_xf05p")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 script = ExtResource("1_wohga")
 
 [node name="BeatmapFileDialog" type="FileDialog" parent="."]
@@ -51,21 +53,21 @@ scale = Vector2(0.478025, 0.477611)
 texture = ExtResource("2_opowj")
 
 [node name="StageBorderRight" type="Sprite2D" parent="Background"]
-position = Vector2(394.208, -59.0068)
+position = Vector2(446.335, -48.8688)
 rotation = 1.5708
 scale = Vector2(5.44803, 1.62896)
 texture = ExtResource("3_7r17o")
 
 [node name="StageBorderLeft" type="Sprite2D" parent="Background"]
-position = Vector2(-387.692, -60.7346)
+position = Vector2(-439.819, -61.9004)
 rotation = 1.5708
 scale = Vector2(5.45977, 1.62896)
 texture = ExtResource("3_7r17o")
 
 [node name="ForegroundNotes" type="Sprite2D" parent="Background"]
 modulate = Color(0, 0, 0, 0.396078)
-position = Vector2(2.44342, -29.3213)
-scale = Vector2(12.1917, 17.4859)
+position = Vector2(3.66578, -35.8371)
+scale = Vector2(13.8334, 17.4859)
 texture = SubResource("GradientTexture2D_u068m")
 
 [node name="ForegroundAll" type="Sprite2D" parent="Background"]
@@ -75,22 +77,22 @@ scale = Vector2(30.4157, 17.2409)
 texture = SubResource("GradientTexture2D_u068m")
 
 [node name="Column0" parent="." instance=ExtResource("4_dtnvj")]
-position = Vector2(392, 570)
+position = Vector2(368, 560)
 scale = Vector2(0.75, 0.75)
 key_action = "key0"
 
 [node name="Column1" parent="." instance=ExtResource("4_dtnvj")]
-position = Vector2(504, 570)
+position = Vector2(496, 560)
 scale = Vector2(0.75, 0.75)
 key_action = "key1"
 
 [node name="Column2" parent="." instance=ExtResource("4_dtnvj")]
-position = Vector2(616, 570)
+position = Vector2(624, 560)
 scale = Vector2(0.75, 0.75)
 key_action = "key2"
 
 [node name="Column3" parent="." instance=ExtResource("4_dtnvj")]
-position = Vector2(728, 570)
+position = Vector2(752, 560)
 scale = Vector2(0.75, 0.75)
 key_action = "key3"
 
@@ -146,14 +148,31 @@ offset_bottom = 748.0
 [node name="QuitButton" type="Button" parent="PauseMenu"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-offset_left = 435.0
-offset_top = 300.0
-offset_right = 685.0
-offset_bottom = 360.0
+offset_left = 440.0
+offset_top = 368.0
+offset_right = 690.0
+offset_bottom = 428.0
 theme_override_fonts/font = ExtResource("10_71y55")
-text = "Sair"
+text = "Quit"
 icon_alignment = 1
 vertical_icon_alignment = 0
+
+[node name="MenuButton" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.025
+anchor_top = 0.925
+anchor_right = -0.025
+anchor_bottom = 0.925
+offset_left = 441.0
+offset_top = 259.0
+offset_right = 691.0
+offset_bottom = 319.0
+theme_override_fonts/font = ExtResource("10_71y55")
+text = "Menu
+"
+icon_alignment = 1
+vertical_icon_alignment = 2
 
 [node name="ContinueButton" type="Button" parent="PauseMenu"]
 layout_mode = 2
@@ -161,28 +180,248 @@ anchor_left = -0.025
 anchor_top = 0.925
 anchor_right = -0.025
 anchor_bottom = 0.925
-offset_left = 436.0
-offset_top = 193.0
-offset_right = 686.0
-offset_bottom = 253.0
+offset_left = 441.0
+offset_top = 187.0
+offset_right = 691.0
+offset_bottom = 247.0
 theme_override_fonts/font = ExtResource("10_71y55")
-text = "Continuar
-"
+text = "Continue"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = 815.0
-offset_top = 635.0
-offset_right = 1480.0
-offset_bottom = 653.0
+offset_left = 840.0
+offset_top = 632.0
+offset_right = 1505.0
+offset_bottom = 650.0
 rotation = -1.5708
 scale = Vector2(0.61, 0.61)
 value = 100.0
 texture_progress = ExtResource("13_yp4h4")
 script = ExtResource("14_jte2l")
 
+[node name="Visualizer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("15_3hdxe")
+
+[node name="Left" type="Control" parent="Visualizer"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 632.0
+offset_right = 40.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect2" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 48.0
+offset_top = 632.0
+offset_right = 64.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect3" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 72.0
+offset_top = 632.0
+offset_right = 88.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect4" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 96.0
+offset_top = 632.0
+offset_right = 112.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect5" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 632.0
+offset_right = 136.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect6" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 144.0
+offset_top = 632.0
+offset_right = 160.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect7" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 168.0
+offset_top = 632.0
+offset_right = 184.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect8" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 632.0
+offset_right = 208.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect9" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 216.0
+offset_top = 632.0
+offset_right = 232.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect10" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 240.0
+offset_top = 632.0
+offset_right = 256.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect11" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 264.0
+offset_top = 632.0
+offset_right = 280.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="Right" type="Control" parent="Visualizer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 832.0
+offset_right = 872.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.0
+anchor_top = 0.5
+anchor_right = 7.0
+anchor_bottom = 0.5
+offset_left = -3.05176e-05
+offset_top = 612.0
+offset_right = 16.0
+offset_bottom = 620.0
+rotation = 3.14159
+
+[node name="ColorRect2" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 256.0
+offset_top = 632.0
+offset_right = 272.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect3" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 232.0
+offset_top = 632.0
+offset_right = 248.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect4" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 208.0
+offset_top = 632.0
+offset_right = 224.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect5" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 184.0
+offset_top = 632.0
+offset_right = 200.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect6" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 632.0
+offset_right = 176.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect7" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 136.0
+offset_top = 632.0
+offset_right = 152.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect8" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 112.0
+offset_top = 632.0
+offset_right = 128.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect9" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 88.0
+offset_top = 632.0
+offset_right = 104.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect10" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 632.0
+offset_right = 80.0
+offset_bottom = 640.0
+rotation = 3.14159
+
+[node name="ColorRect11" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 632.0
+offset_right = 56.0
+offset_bottom = 640.0
+rotation = 3.14159
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="file_selected" from="BeatmapFileDialog" to="." method="_on_beatmap_file_dialog_file_selected"]
 [connection signal="pressed" from="PauseMenu/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/MenuButton" to="PauseMenu" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="PauseMenu/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]

@@ -1,0 +1,352 @@
+[gd_scene load_steps=9 format=3 uid="uid://6y107mb375ws"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_d6n3a"]
+[ext_resource type="AudioStream" uid="uid://dry3h0nwnuvex" path="res://theme.mp3" id="2_jrpgs"]
+[ext_resource type="Texture2D" uid="uid://dlpy0n7vfcvls" path="res://assets/background.png" id="3_2fsiw"]
+[ext_resource type="FontFile" uid="uid://b0jcaf3n28a2n" path="res://assets/Minecraft.ttf" id="4_riu0k"]
+[ext_resource type="Texture2D" uid="uid://df3cyrpypl1hc" path="res://assets/rocket.png" id="5_364q0"]
+[ext_resource type="Script" path="res://scripts/visualizer.gd" id="5_fuwdb"]
+
+[sub_resource type="Gradient" id="Gradient_gnwmo"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jhjqr"]
+gradient = SubResource("Gradient_gnwmo")
+fill_to = Vector2(0, 0)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d6n3a")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jrpgs")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="Wallpaper" type="Sprite2D" parent="."]
+position = Vector2(958, 542)
+scale = Vector2(0.478025, 0.477611)
+texture = ExtResource("3_2fsiw")
+
+[node name="ForegroundAll" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.203922)
+position = Vector2(955.369, 540.249)
+scale = Vector2(29.8947, 18.6172)
+texture = SubResource("GradientTexture2D_jhjqr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 544.0
+offset_right = 888.0
+offset_bottom = 664.0
+scale = Vector2(2.805, 2.805)
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_riu0k")
+text = "START"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_riu0k")
+text = "EXIT"
+
+[node name="RocketShadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.54902)
+position = Vector2(1319.57, 432.582)
+scale = Vector2(0.835205, 0.835205)
+texture = ExtResource("5_364q0")
+
+[node name="Rocket" type="Sprite2D" parent="."]
+modulate = Color(0.466181, 0.466181, 0.466181, 1)
+self_modulate = Color(1, 1, 1, 0.843137)
+position = Vector2(1359.57, 416.582)
+scale = Vector2(0.838505, 0.838505)
+texture = ExtResource("5_364q0")
+
+[node name="TitleShadow" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 384.0
+offset_top = 352.0
+offset_right = 1562.0
+offset_bottom = 552.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.486275)
+theme_override_fonts/font = ExtResource("4_riu0k")
+theme_override_font_sizes/font_size = 180
+text = "Rockstar
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = 336.0
+offset_right = 1570.0
+offset_bottom = 528.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_riu0k")
+theme_override_font_sizes/font_size = 180
+text = "Rockstar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleDepth" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 344.0
+offset_right = 1945.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.156863)
+theme_override_fonts/font = ExtResource("4_riu0k")
+theme_override_font_sizes/font_size = 180
+text = "Rockstar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Visualizer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("5_fuwdb")
+
+[node name="Left" type="Control" parent="Visualizer"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 48.0
+offset_top = 1080.0
+offset_right = 96.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect2" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 104.0
+offset_top = 1080.0
+offset_right = 152.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect3" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 1080.0
+offset_right = 208.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect4" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 216.0
+offset_top = 1080.0
+offset_right = 264.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect5" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 272.0
+offset_top = 1080.0
+offset_right = 320.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect6" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 328.0
+offset_top = 1080.0
+offset_right = 376.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect7" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 384.0
+offset_top = 1080.0
+offset_right = 432.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect8" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 440.0
+offset_top = 1080.0
+offset_right = 488.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect9" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 496.0
+offset_top = 1080.0
+offset_right = 544.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect10" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 552.0
+offset_top = 1080.0
+offset_right = 600.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect11" type="ColorRect" parent="Visualizer/Left"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 608.0
+offset_top = 1080.0
+offset_right = 656.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="Right" type="Control" parent="Visualizer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 832.0
+offset_right = 872.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.0
+anchor_top = 0.5
+anchor_right = 7.0
+anchor_bottom = 0.5
+offset_left = 800.0
+offset_top = 1060.0
+offset_right = 848.0
+offset_bottom = 1068.0
+rotation = 3.14159
+
+[node name="ColorRect2" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 1080.0
+offset_right = 1072.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect3" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 968.0
+offset_top = 1080.0
+offset_right = 1016.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect4" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 912.0
+offset_top = 1080.0
+offset_right = 960.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect5" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 1080.0
+offset_right = 904.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect6" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 800.0
+offset_top = 1080.0
+offset_right = 848.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect7" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 744.0
+offset_top = 1080.0
+offset_right = 792.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect8" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 688.0
+offset_top = 1080.0
+offset_right = 736.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect9" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 632.0
+offset_top = 1080.0
+offset_right = 680.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect10" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 576.0
+offset_top = 1080.0
+offset_right = 624.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[node name="ColorRect11" type="ColorRect" parent="Visualizer/Right"]
+self_modulate = Color(1, 1, 1, 0.435294)
+layout_mode = 0
+offset_left = 520.0
+offset_top = 1080.0
+offset_right = 568.0
+offset_bottom = 1088.0
+rotation = 3.14159
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

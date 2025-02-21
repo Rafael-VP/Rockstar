@@ -26,3 +26,9 @@ func _on_continue_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_menu_button_pressed() -> void:
+	resume()
+	get_tree().change_scene_to_file("res://scenes/song_selection.tscn") 
+	pass # Replace with function body.

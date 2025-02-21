@@ -17,3 +17,6 @@ func _process(delta):
 
 func update(amount: int):
 	value += amount
+	
+	if value == 0:
+		get_tree().change_scene_to_file("res://scenes/song_selection.tscn") 
